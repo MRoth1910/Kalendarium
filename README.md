@@ -12,6 +12,8 @@ The dates of Easter are verified [here](https://www.assa.org.au/edm#Method).
 
 [This website lists the 1st Sundays of Advent](https://www.timeanddate.com/holidays/us/first-sunday-advent).
 
+Fonts come from [Octavio Pardo's version of EB Garamond](https://github.com/octaviopardo/EBGaramond12) if you'd like to use those.
+
 Ultimately, of course, the first tool has these dates, but it is more convenient to work from a list when entering fixed days such as Easter, used in the formulae of the spreadsheet program to generate other dates.
 
 Error-reporting and suggestions are both welcome.
