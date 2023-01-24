@@ -1,0 +1,76 @@
+% !TEX TS-program = LuaLaTeX+se
+% !TEX root = Kalendarium.tex
+
+\lineskiplimit = 0pt
+\markboth{}{}
+\thispagestyle{empty}
+{\centering {\large \capspace{TABELLA FESTORUM MOBILIUM}.\par}}\label{ephemeridae} \par %% will need to fix label once I learn how to do that… %% need to adjust spacing
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\boldhline}{\noalign{\global\arrayrulewidth1.5pt}\hline\noalign{\global\arrayrulewidth1pt}}
+\newcommand{\thinhline}{\noalign{\global\arrayrulewidth0.5pt}\hline\noalign{\global\arrayrulewidth1pt}}
+\newcommand{\whiteline}{\noalign{\global\arrayrulewidth4pt}\hline\noalign{\global\arrayrulewidth1pt}}
+\newcommand{\STAB}[1]{\begin{tabular}{@{}c@{}}#1\end{tabular}}
+\fontsize{7.5}{7.5}\selectfont
+\begin{longtable}{|>{\centering}m{0.12\textwidth}|>{\centering}m{0.08\textwidth}|>{\centering}m{0.15\textwidth}|>{\centering}m{0.15\textwidth}|>{\centering}m{0.16\textwidth}|>{\centering}m{0.16\textwidth}|>{\centering\arraybackslash}m{0.15\textwidth}|}
+\arrayrulecolor{black}\boldhline
+\gcolor{Anno} & \gcolor{Litt.\\dom.} & \gcolor{Feria IV\\Cinerum} & \gcolor{Pascha} & \gcolor{Ascensio} & \gcolor{Pentecostes} & \gcolor{Adventus} \\
+\boldhline
+\endfirsthead
+\endhead
+\endfoot
+\endlastfoot
+\arrayrulecolor{black} 
+\rule{0pt}{3.5mm}2022 & 	\rule{0pt}{3.5mm}b & 	\rule{0pt}{3.5mm}2 mar. &		\rule{0pt}{3.5mm}17 apr. & 	\rule{0pt}{3.5mm}26 maii & 		\rule{0pt}{3.5mm}5 junii & 		\rule{0pt}{3.5mm}27 nov.\\
+2023 & 				\gcolor{A} & 		22 febr. & 					9 apr. & 					18 maii & 					28 maii &					3 dec.\\
+2024 & 				g f & 					14 febr. & 					31 mar. & 					9 maii & 					19 maii & 					1 dec.\\
+2025 &				e & 					5 mar. & 					20 apr. & 					29 maii & 					8 junii & 					30 nov.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2026 & 	\rule{0pt}{3.5mm}d & 	\rule{0pt}{3.5mm}18 febr. & 	\rule{0pt}{3.5mm}5 apr. & 		\rule{0pt}{3.5mm}14 maii & 		\rule{0pt}{3.5mm}24 maii & 		\rule{0pt}{3.5mm}29 nov.\\
+2027 &				c & 					10 febr. & 					28 mar. & 					6 maii & 					16 maii & 					28 nov.\\
+2028 &				b \gcolor{A} & 	1 mar. & 					16 apr. & 					25 maii & 					4 junii & 					3 dec.\\
+2029 &				g & 					14 febr. & 					1 apr. & 					10 maii & 					20 maii &					2 dec.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2030 & 	\rule{0pt}{3.5mm}f & 		\rule{0pt}{3.5mm}6 mar. & 		\rule{0pt}{3.5mm}21 apr. & 	\rule{0pt}{3.5mm}30 maii & 		\rule{0pt}{3.5mm}9 junii & 		\rule{0pt}{3.5mm}1 dec.\\
+2031 &				e & 					26 febr. & 					13 apr. 					& 22 maii 					& 1 junii & 					30 nov.\\
+2032 &				d c & 				11 febr. & 					28 mar. 					& 6 maii 					& 16 maii & 				28 nov.\\
+2033 &				b & 					2 mar. & 					17 apr. 					& 26 maii 					& 5 junii & 					27 nov.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2034 & 	\rule{0pt}{3.5mm}\gcolor{A} & \rule{0pt}{3.5mm}22 febr. & \rule{0pt}{3.5mm}9 apr. & \rule{0pt}{3.5mm}18 maii & 		\rule{0pt}{3.5mm}28 maii & 		\rule{0pt}{3.5mm}3 dec.\\
+2035 &				g & 					7 febr. & 					25 mar. & 					3 maii & 					13 maii  & 					2 dec.\\
+2036 &				f e & 					27 febr. & 					13 apr. & 					22 maii & 					1 junii & 					30 nov.\\
+2037 &				d & 					18 febr. & 					5 apr. & 					14 maii & 					24 maii & 					29 nov.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2038 & 	\rule{0pt}{3.5mm}c & 	\rule{0pt}{3.5mm}10 mar. & 	\rule{0pt}{3.5mm}25 apr. & 	\rule{0pt}{3.5mm}3 junii & 		\rule{0pt}{3.5mm}13 junii & 		\rule{0pt}{3.5mm}28 nov.\\ 		
+2039 &				b & 					23 febr. & 					10 apr. & 					19 maii & 					29 maii  & 					27 nov.\\
+2040 &				\gcolor{A} g & 	15 febr. & 					1 apr. & 					10 maii & 					20 maii  & 					2 dec.\\
+2041 &				f & 					6 mar. & 					21 apr. & 					30 maii & 					9 junii  & 					1 dec.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2042 & 	\rule{0pt}{3.5mm}e & 	\rule{0pt}{3.5mm}19 febr. & 	\rule{0pt}{3.5mm}6 apr. & 		\rule{0pt}{3.5mm}15 maii & 		\rule{0pt}{3.5mm}25 maii  & 	\rule{0pt}{3.5mm}30 nov.\\
+2043 &				d & 					11 febr. & 					29 mar. & 					7 maii & 					17 maii  & 					29 nov.\\
+2044 &				c b & 				2 mar. & 					17 apr. & 					26 maii & 					5 junii & 					27 nov.\\
+2045 &				\gcolor{A} & 		22 febr. & 					9 apr. & 					18 maii & 					28 maii & 					3 dec.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2046 & 	\rule{0pt}{3.5mm}g & 	\rule{0pt}{3.5mm}7 febr. & 		\rule{0pt}{3.5mm}25 mar. & 	\rule{0pt}{3.5mm}3 maii &		\rule{0pt}{3.5mm}13 maii & 		\rule{0pt}{3.5mm}2 dec.\\
+2047 &				f & 					27 febr. & 					14 apr. & 					23 maii & 					2 junii  & 					1 dec.\\
+2048 &				e d & 				19 febr. & 					5 apr. & 					14 maii & 					24 maii & 					29 nov.\\
+2049 &				c & 					3 mar. & 					18 apr. & 					27 maii & 					6 junii & 					28 nov.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2050 & 	\rule{0pt}{3.5mm}b & 	\rule{0pt}{3.5mm}23 febr. & 	\rule{0pt}{3.5mm}10 apr. & 	\rule{0pt}{3.5mm}19 maii & 		\rule{0pt}{3.5mm}29 maii & 		\rule{0pt}{3.5mm}27 nov.\\
+2051 &				\gcolor{A} & 		15 febr. & 					2 apr. & 					11 maii & 					21 maii & 					3 dec.\\
+2052 &				g f & 					6 mar. & 					21 apr. & 					30 maii & 					9 junii & 					1 dec.\\
+2053 &				e & 					19 febr. & 					6 apr. & 					15 maii & 					25 maii & 					30 nov.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2054 & 	\rule{0pt}{3.5mm}d & 	\rule{0pt}{3.5mm}11 febr. & 	\rule{0pt}{3.5mm}29 mar. & 	\rule{0pt}{3.5mm}7 maii & 		\rule{0pt}{3.5mm}17 maii & 		\rule{0pt}{3.5mm}29 nov.\\
+2055 &				c & 					3 mar. & 					18 apr. & 					27 maii & 					6 junii & 					28 nov.\\
+2056 &				b \gcolor{A} & 	16 febr. & 					2 apr. & 					11 maii & 					21 maii & 					3 dec.\\
+2057 &				g & 					7 mar. & 					22 apr. & 					31 maii & 					10 junii & 					2 dec.\\[0.5mm]
+\arrayrulecolor{gregoriocolor} \thinhline \arrayrulecolor{black}
+\rule{0pt}{3.5mm}2058 & 	\rule{0pt}{3.5mm}f & 		\rule{0pt}{3.5mm}27 febr. & 	\rule{0pt}{3.5mm}14 apr. & 	\rule{0pt}{3.5mm}23 maii & 		\rule{0pt}{3.5mm}2 junii & 		\rule{0pt}{3.5mm}1 dec.\\
+2059 &				e & 					12 febr. & 					30 mar. & 					8 maii & 					18 maii & 				30 nov.\\
+2060 &				d c & 				3 mar. & 					18 apr. & 					27 maii & 					6 junii & 					28 nov.\\
+2061 &				b & 					23 febr. & 					10 apr. & 					19 maii & 					29 maii & 					27 nov.\\[0.5mm]
+\thinhline
+\end{longtable}

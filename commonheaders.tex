@@ -1,0 +1,244 @@
+%%%%%%%%%%%%%%% STANDARD PACKAGES %%%%%%%%%%%%%%%
+
+%% for personal reasons, the commands are a mix of French and English names. Feel free to choose one or the other if you make use of them. This file is subject to change later on.
+
+%% This is the format of the recent Solesmes books.
+%\usepackage[paperwidth=6in, paperheight=9in]{geometry}
+\usepackage[paperheight=205mm,paperwidth=135mm]{geometry}
+\usepackage{fontspec}
+\usepackage[ecclesiasticlatin.usej]{babel}
+     \babelprovide[hyphenrules=latin]{ecclesiasticlatin}
+          \usepackage{xspace}
+%     \usepackage{multicol}
+%\usepackage{paracol}
+%\footnotelayout{m} %% this allows merged footnote if text is in parallel columns (mostly translations)
+\usepackage{fancyhdr}
+\usepackage{needspace} %%pour réserver de l'espace en bas de page ; ça évite des séparations entre les titres et la partition ou le texte qui les suivent.
+\usepackage[compact]{titlesec}
+\usepackage{xcolor}
+%\usepackage{xstring}
+\usepackage{enumitem} %% nécessaire pour les textes des psaumes.
+\usepackage{hyperref}
+\usepackage{refcount}
+
+
+%%%%%%%%%%%%%%% HYPHENATION AND TYPOGRAPHICAL CONVENTIONS %%%%%%%%%%%%%%
+
+%% page settings %%%%
+\geometry{bindingoffset=5mm,
+inner=10mm,
+outer=10mm,
+top=12mm,
+bottom=15mm,
+headsep=3mm,
+} %%borrowed from Matthias, based on the Solesmes books; binding offset TBD.
+
+\AtBeginDocument{\setlength{\parindent}{1em}} %% should set 1em to EB Garamond not Computer Modern.
+
+%%%%%%%%%%%%%%% GREGORIO CONFIG %%%%%%%%%%%%%%%
+
+\usepackage[autocompile]{gregoriotex}
+
+%% sets * and † to font called via fontspec
+\def\GreStar{*}
+\def\GreDagger{†}
+%\gresetspecial{cross}{\grecross} %% to use cross from Gregorio fonts which is thin and doesn't especially match text well.
+
+%produces a score with a smaller initial (default is 40 pt) and annotations like in the Solesmes books; the 1st is optional and can be omitted as needed.
+ \NewDocumentCommand{\gscore}{O{}mm}{%
+ \greannotation{#1}%
+\greannotation{#2}%
+\grechangestyle{initial}{\fontsize{28}{28}\selectfont}%
+ \gregorioscore{partitions/#3}}
+
+%% score with no initial, e.g psalms, common tones, etc.
+\newcommand{\smallscore}[2][y]{
+  \gresetinitiallines{0}
+  \gregorioscore{partitions/#2} %% à remplacer avec NewDocumentCommand ; les arguments ne marchent pas correctement … que fait le [y] ?
+  \gresetinitiallines{1}
+}
+
+ \NewDocumentCommand{\MagAnnotation}{}{%
+ \grechangedim{annotationseparation}{-0.01cm}{fixed}%
+ } %% pour les antiennes où le chiffre convient mieux aux miniscules (parfois 1, 2, 4, 7…) ; il n'est pas nécessaire pour 6 ou 8.
+%\gresetheadercapture{annotation}{greannotation}{string}
+
+%% text above lines shall be italicized and in a smaller font
+\grechangestyle{abovelinestext}{\it\fontsize{8}{10}\selectfont}
+
+%% We do not want alt (A-bove l-ines t-ext) to be it for psalm and canticle endings,, however;  Roman/upright text is what the Liber Usualis uses.
+
+%% fine-tuning of space beween the staff and the text above lines (used for Magnificats; needs to be rethought (again, should 2 and 3 be raised or not?) and worked into \smallscore
+\newcommand{\altraise}{-0.2cm} %% default is -0.1cm %% needs to be fine-tuned for \rubrique command with EB Garamond font. -0.2cm is MB value
+\grechangedim{abovelinestextraise}{\altraise}{scalable}
+
+\newcommand{\altheight}{0.5cm} %% default is 0.3cm and value must be bigger than text height; this should fix the problem. but needs further investigation.
+\grechangedim{abovelinestextheight}{\altheight}{scalable} %% this is a very finicky command.
+
+%% allows printing of glyphs from Gregorio score font (available glyphs listed in documentation) as text.
+\makeatletter
+\def\gretextglyph#1{{\gre@font@music\csname GreCP#1\endcsname}}
+\makeatother
+
+%%% Font %%%
+\setmainfont{EB Garamond}[UprightFont=EB Garamond Regular,
+ItalicFont= EB Garamond Italic,
+BoldFont= EB Garamond Bold,
+Ligatures=Rare,
+Numbers=Proportional,
+Numbers=OldStyle] %% all \kern numbers are based on this and can be removed if this font is abandoned.
+\newfontfamily\symbolfont{liturgy}
+  %% text must be written {\symbolfont{+}} (you can use V and R as well) but may conflict as + is † in gabc. Cross should be \small or even \footnotesize
+%\newfontfamily\symbolfont2{BorgiaPro-Regular}
+
+%%%% Font %%%
+%\setmainfont{EB Garamond}[UprightFont=EB Garamond Regular,
+%ItalicFont= EB Garamond Italic,
+%BoldFont= EB Garamond Bold,
+%Ligatures=Rare,
+%StylisticSet=6,
+%Numbers=Proportional,
+%Numbers=OldStyle] %% all \kern numbers are based on this and can be removed if this font is abandoned. %%StylisticSet=6 is, in Pardo EBGaramond, the long-tailed Q.
+%\newfontfamily\symbolfont{liturgy} 
+  %% text must be written {\symbolfont{+}} (you can use V and R as well) but may conflict as + is † in gabc. Cross should be \small or even \footnotesize
+
+
+%%% Typographical Commands %%%%
+
+%%rubrics: black italics, smaller than body of psalms etc
+
+\NewDocumentCommand{\rubrique}{m}{{\fontsize{8}{10}\selectfont\textit{#1}}}
+
+%\NewDocumentCommand{\rubrique}{m}{{\scriptsize\textit{#1}}}
+
+%% macro to print Alleluia for versicles.
+\NewDocumentCommand{\tpalleluia}{}{(\textit{T.P.} Allelúia.)}
+
+%% macro to print normal text inside of rubric (name of a chant or prayer, etc.)
+
+\NewDocumentCommand{\normaltext}{m}{{\normalfont\fontsize{8}{10}\selectfont{#1}}}
+
+%% in case something should be bolded inside of a rubrique
+\NewDocumentCommand{\rubriquegras}{m}{{\fontsize{8}{10}\selectfont\textbf{#1}}}
+
+%% to print in red instead of italicizing
+\NewDocumentCommand{\rouge}{m}{\textcolor{gregoriocolor}{\fontsize{8}{10}\selectfont{#1}}}
+
+%% to print in black within rouge group.
+\NewDocumentCommand{\textenoir}{m}{\textcolor{black}{\fontsize{8}{10}\selectfont\normalfont{#1}}}
+
+%% rouge but in italic (this is technically not correct).
+\NewDocumentCommand{\rougeit}{m}{\textcolor{gregoriocolor}{\fontsize{8}{10}\selectfont\textit{#1}}}
+
+%\newcommand{\rubriquegras}[1]{{\fontsize{9}{11}\selectfont\textbf{#1}}}
+
+%%macro to space punctuation with ecclesiasticlatin language from babel.
+\NewDocumentCommand{\espaceponctuation}{}{\hspace{0.10em}} %%this value seems more balanced with this font than the definition provided in the ecclesiasticlatin documentation.
+
+\NewDocumentCommand{\myrule}{}{%
+    \par%
+    {%
+        \centering%
+        \rule{0.3\textwidth}{0.4pt}%
+        \par%
+    }% typesets a horizontal rule like on the page with the prayers before and after the office.
+}  %%If you're using color at all in your document, you might want to either force \myrule to use black or make it cusotmizable. (from u/Independent-Comb-257)
+
+
+%%% typesets a cross pattée.
+
+\NewDocumentCommand{\mycross}{}{%
+{\symbolfont\footnotesize{{+}}}%
+{}
+} %% can replace <+> with <U+2720> if a suitable font is found (or EB Garamond font is fixed); command will be useful in lieu of typing the Unicode.
+
+%% macro to format psalm text
+
+\NewDocumentCommand{\pstexte}{ m }{%
+    \smallskip%
+    \noindent%
+    \begin{itemize}[%
+    		label=\null, %
+			leftmargin=0pt, %
+			itemindent=0mm, %
+			labelsep=0pt, %
+			labelwidth=0pt, %
+			rightmargin=0pt, %
+			parsep=0pt, %
+			topsep=0pt, %
+			itemsep=0pt]%
+    \input{psaumes/#1}
+    \end{itemize}}
+    
+    %% Command de Matthias Bry modifié, prints psalm incipit score with the text
+    \NewDocumentCommand{\psalmus}{mmm}{
+	\needspace{4\baselineskip}
+	\smalltitle{Psalmus #1.}
+	\smallscore[n]{#2}
+	\pstexte{#3}
+}
+    
+    %% macro to print any additional text (Capitiulum, oratio, rubrics)
+ \NewDocumentCommand{\textes}{ m }{%
+    \input{textes/#1}}
+    
+    
+    %% SC work for page headers and for secondary headings but not so much for things like "Dominica…" and certainly not the feast name%%
+    
+    %%%% Headers%%%%
+    \pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+
+%\fancyhead[RO]{\small\thepage}
+%\fancyhead[LE]{\small\thepage}
+
+\fancyhead[RO]{\small\rightmark\hspace{0.5cm}\thepage}
+\fancyhead[LE]{\small\thepage\hspace{0.5cm}\leftmark}
+
+\newcommand{\setheaders}[2]{
+	\renewcommand{\rightmark}{{\sc#2}}
+	\renewcommand{\leftmark}{{\sc#1}}
+}
+\setheaders{}{}
+
+
+%% TITLE Commands %%%%
+\titleformat{\section}[display]{\large\filcenter\sc\addfontfeature{LetterSpace=3.0}}{}{}{}
+\titleformat{\subsection}[display]{\large\filcenter\sc\addfontfeature{LetterSpace=3.0}}{}{}{}
+\setcounter{secnumdepth}{0}
+\titlespacing{\section}{0pt}{*0}{*0}
+
+%% all of these are a mess and should probably be ignored, but feel free to use them by referring to Matthias B's originals in the Nocturnale Romanum repository.
+
+\newcommand{\officiumtitulum}[1]{
+%  \newpage
+%  \thispagestyle{empty}
+  \setheaders{{\scshape\addfontfeature{LetterSpace=3.0}#1}}{{\scshape\addfontfeature{LetterSpace=3.0} #1}}
+  \begin{center}
+  {\scshape\large #1}\par
+  \end{center}}
+  
+%   \setheaders{{{\scshape\addfontfeature{LetterSpace=3.0}}}{{{\scshape\addfontfeature{LetterSpace=3.0} {#1}}}
+\NewDocumentCommand{\smalltitle}{m}{
+\needspace{5\baselineskip}  %% very small if there are neumes above the staff, including flats in mode 2, e.g. O Doctor optime
+\vspace{\baselineskip}
+ {\centering #1\par}
+}
+
+\newcommand{\subtitulum}[1]{
+ \subsection{
+  \begin{center}
+  {\large#1}
+  \end{center}
+}}
+
+%% originally used apparently for typesetting portions of the Common of the BVM
+\newcommand{\espacetitre}{\vspace{-0.5cm}}
+\newcommand{\espaceps}{\vspace{-3mm}} %% ps =psaume
+\newcommand{\espacecap}{\vspace{-3mm}} %% cap is capitulum
+\newcommand{\espace}{\vspace{2mm}}
+
+
