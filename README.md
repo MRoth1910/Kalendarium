@@ -2,7 +2,7 @@
 
 A repository for some materials related to the Catholic liturgy, namely a table of moveable feasts and the perpetual Roman calendar. The inspiration for the project came from work done by Matthias Bry for the [Nocturnale Romanum project](https://github.com/Nocturnale-Romanum), which is why the spreadsheet is a mix of French-Latin but with American dates in the table of moveable feasts.
 
-NB: when using the spreadsheets, please note that the original version is the Numbers version, as that is the program which I have freely available on macOS. The formula results are the same when exported to Excel's file format, but the way they are calculated changes ("Column" becomes "Column Cell N" and then the rest is the same: plus or minus the relevant days. Using Numbers, unfortunately with a proprietary default in lieu of Excel, LibreOffice, or even Google Sheets means that you do need to check the file extensions. Sorry about that!
+NB: when using the spreadsheets, please note that the original version is the Numbers version, as that is the program which I have freely available (free as in without paying extra, not FOSS or libre) on macOS. The formula results are the same when exported to Excel's file format, but the way they are calculated changes ("Column" becomes "Column Cell N" and then the rest is the same: plus or minus the relevant days. Using Numbers, unfortunately with a proprietary default in lieu of Excel, LibreOffice, or even Google Sheets means that you do need to check the file extensions. Sorry about that!
 
 Septuagesima and Ash Wednesday (as necessary) are adjusted manually with respect to the relevant cells in leap years, as a month-date format considers the year to be the current year.
 
